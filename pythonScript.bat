@@ -1,1 +1,1 @@
-@py.exe D:\Cursos\automating-boring-stuff\pythonScript.py%*
+@python.exe D:\Cursos\automating-boring-stuff\pythonScript.py%*
