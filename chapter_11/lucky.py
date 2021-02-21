@@ -7,7 +7,7 @@ The requests module can download this page and then you can use Beautiful Soup t
 Finally, you’ll use the webbrowser module to open those links in browser tabs.
 """
 
-"""import requests, sys, webbrowser, bs4
+import requests, sys, webbrowser, bs4
 
 print('Googling...') # display text while downloading the Google page
 res = requests.get('https://www.google.com/search?q=' + ' '.join(sys.argv[1:]))
@@ -16,21 +16,17 @@ res.raise_for_status()
 soup = bs4. BeautifulSoup(res.text, 'html.parser')
 #print('[INFO] ' + soup.prettify())
 # Open a browser tab for each result.
-linkElems = soup.select('.r a') # It looks like the r class is used only for search result links.
-
+linkElems = soup.select('a') # It looks like the r class is used only for search result links.
+# print(linkElems)
 numOpen = min(5, len(linkElems))
 for i in range(numOpen):
-    webbrowser.open('http://google.com' + linkElems[i].get('href'))"""
+    webbrowser.open('http://google.com' + linkElems[i].get('href'))
+    print(linkElems[i].get('href'))
 
-import requests
-from bs4 import BeautifulSoup as bs
+"""from bs4 import BeautifulSoup
 
-urls = ['https://www.amazon.com/s?k=bacopa&page=1']
-
-with requests.Session() as s:
-    for url in urls:
-        r = s.get(url, headers = {'User-Agent' : 'Mozilla/5.0'})
-        soup = bs(r.content, 'lxml')
-        listings = soup.find(id="suggestions-template")
-        print(listings)
-        print(len(listings))
+page = <span id="something">useless</span>
+          <span id="">some text</span>
+          <span id="different">useless</span>
+soup = BeautifulSoup(page)
+print(soup.select('[id="something"]'))"""
